@@ -1,0 +1,167 @@
+/* Custom styles layered on top of Tailwind */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top left, rgba(139, 92, 246, 0.08), transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(244, 114, 182, 0.06), transparent 50%),
+    #07070b;
+  background-attachment: fixed;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #07070b;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a3a;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+/* Selection */
+::selection {
+  background: #8b5cf6;
+  color: #07070b;
+}
+
+/* Reveal-on-scroll.
+   Falls back to a plain fade-in if the JS module fails to load
+   (e.g. when the HTML is opened via the file:// protocol). */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: reveal-fallback 0.9s 1.5s forwards;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
+}
+@keyframes reveal-fallback {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Post card hover lift */
+.post-card a[href] {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.post-card:hover a[href] {
+  transform: translateY(-4px);
+}
+
+/* Hero canvas container */
+#hero-3d canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 1rem;
+}
+
+/* Background canvas behind everything */
+#bg-canvas {
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* Long-form article body typography */
+.prose-article {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: #d6d6e0;
+}
+.prose-article p {
+  margin: 1.4em 0;
+}
+.prose-article h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 2.4em 0 0.6em;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+.prose-article h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2em 0 0.4em;
+  color: #ffffff;
+}
+.prose-article blockquote {
+  border-left: 3px solid #a78bfa;
+  padding-left: 1.4rem;
+  margin: 2em 0;
+  font-style: italic;
+  color: #b8b8c8;
+  font-size: 1.25rem;
+}
+.prose-article a {
+  color: #a78bfa;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.prose-article a:hover {
+  color: #c4b5fd;
+}
+.prose-article code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: rgba(167, 139, 250, 0.12);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #c4b5fd;
+}
+.prose-article pre {
+  background: #0d0d14;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  overflow-x: auto;
+  margin: 1.8em 0;
+}
+.prose-article pre code {
+  background: none;
+  padding: 0;
+  color: #e8e8f0;
+  font-size: 0.92rem;
+}
+.prose-article ul, .prose-article ol {
+  margin: 1.4em 0;
+  padding-left: 1.6em;
+}
+.prose-article li {
+  margin: 0.5em 0;
+}
+.prose-article hr {
+  border: none;
+  text-align: center;
+  margin: 3em 0;
+  color: #2a2a3a;
+}
+.prose-article hr::before {
+  content: '* * *';
+  letter-spacing: 1em;
+  font-size: 1.5em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * {
+    animation: none !important;
+  }
+}

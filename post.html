@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The quiet beauty of small software — Nebula</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Fraunces', 'Georgia', 'serif'],
+          },
+          colors: {
+            ink: { 900:'#07070b', 800:'#0d0d14', 700:'#13131c', 500:'#2a2a3a', 300:'#9b9bb0', 100:'#e8e8f0' },
+            accent: { 400:'#a78bfa', 500:'#8b5cf6', 600:'#7c3aed' },
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-ink-900 text-ink-100 font-sans antialiased overflow-x-hidden">
+
+  <canvas id="bg-canvas" class="fixed inset-0 -z-10"></canvas>
+
+  <div id="reading-progress" class="fixed top-0 left-0 right-0 h-0.5 bg-accent-500 z-[60] origin-left scale-x-0 transition-transform duration-150"></div>
+
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink-900/40 border-b border-white/5">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-full bg-gradient-to-br from-accent-400 to-accent-600 group-hover:scale-110 transition-transform"></span>
+        <span class="font-serif text-xl font-semibold tracking-tight">Nebula</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm text-ink-300">
+        <li><a href="articles.html" class="hover:text-ink-100 transition">Articles</a></li>
+        <li><a href="topics.html" class="hover:text-ink-100 transition">Topics</a></li>
+        <li><a href="about.html" class="hover:text-ink-100 transition">About</a></li>
+        <li><a href="subscribe.html" class="hover:text-ink-100 transition">Subscribe</a></li>
+      </ul>
+      <a href="articles.html" class="text-sm text-ink-300 hover:text-ink-100 transition">← All articles</a>
+    </nav>
+  </header>
+
+  <article class="relative pt-32 pb-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <div class="flex items-center gap-3 text-xs text-ink-300 mb-6">
+          <span class="px-3 py-1 rounded-full bg-accent-500/10 text-accent-400">Featured</span>
+          <span>May 24, 2026</span>
+          <span>·</span>
+          <span>12 min read</span>
+        </div>
+        <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight">
+          The quiet beauty of
+          <span class="italic text-accent-400">small software.</span>
+        </h1>
+        <div class="flex items-center gap-4 mt-10 pb-10 border-b border-white/10">
+          <span class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-400 to-accent-600"></span>
+          <div>
+            <div class="font-medium">Santosh K.</div>
+            <div class="text-sm text-ink-300">Founder & writer · Nebula</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden mb-12 bg-gradient-to-br from-accent-600 via-pink-500 to-amber-400 relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.3),transparent_60%)]"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-40 h-40 rounded-full bg-ink-900/40 backdrop-blur-sm flex items-center justify-center">
+            <span class="text-5xl">✦</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose-article reveal">
+        <p>
+          Somewhere between the rise of the App Store and the arrival of cloud-everything, we forgot that software could be small. Not minimal, exactly — minimal is an aesthetic. <em>Small</em> is a posture: a refusal to expand beyond what a thing needs to be, a preference for the local over the remote, the legible over the clever.
+        </p>
+
+        <p>
+          The first piece of software I ever loved was a text editor that fit on a floppy disk. It had no plugin system. It did not sync. It opened in the time it took me to look up at the screen. When I close my laptop tonight and reach for whatever has replaced it, I will be opening four electron windows, each of which loads a JavaScript runtime to display a list of files.
+        </p>
+
+        <blockquote>
+          The best software I use now is the software that respects my attention enough to disappear when I am done with it.
+        </blockquote>
+
+        <h2>What "small" actually means</h2>
+
+        <p>
+          Small software is not about line count. A compiler can be small. A database can be small. <code>sqlite</code> is small in this sense; it is also somehow the most-deployed database in the world. Smallness is about <em>fit</em>: how closely a piece of software hugs the contours of the problem it is solving, with no slack for hypothetical futures.
+        </p>
+
+        <p>
+          The signs of small software, as I have come to recognize them:
+        </p>
+
+        <ul>
+          <li>It boots instantly. Cold start is a feature, not a metric.</li>
+          <li>It does one job, and the job is the noun in the product's name.</li>
+          <li>It writes its data to a file you could open with another tool.</li>
+          <li>It runs offline by default and treats the network as a bonus.</li>
+          <li>Its settings page fits on one screen.</li>
+        </ul>
+
+        <h2>A simple example</h2>
+
+        <p>
+          I keep a script in <code>~/bin</code> called <code>jot</code>. It is forty-three lines of shell. It appends a timestamped paragraph to a single text file. I have used it almost every day for five years. It has no backend, no auth, no settings, no website, and no plans. I do not pay anyone for it. I will not lose access to it when a startup pivots.
+        </p>
+
+        <pre><code>#!/bin/sh
+echo "## $(date '+%Y-%m-%d %H:%M')" >> ~/journal.md
+${EDITOR:-vim} ~/journal.md
+</code></pre>
+
+        <p>
+          The first time I showed someone this, they asked when I was going to "build it out." I think the answer is "never." It is finished. There is nothing here to build out.
+        </p>
+
+        <h2>The economics of restraint</h2>
+
+        <p>
+          The standard model of software economics rewards growth: more users, more features, more surface area to defend with more engineers. This is a fine model for some categories. It is a deeply strange fit for the categories we apply it to most aggressively — note-takers, to-do lists, calendars, writing tools. The things, in other words, that we use to think.
+        </p>
+
+        <p>
+          When a tool for thinking grows, it grows away from the user. It accumulates other people's workflows. It adds opinions about how a meeting should be structured, or what a "project" is. Every new feature is a small tax on the original idea.
+        </p>
+
+        <h3>A counter-economics</h3>
+
+        <p>
+          The interesting work happening on the edges of the web right now is, I think, an experiment in a different economics: <a href="#">tools sold once</a>, code that lives on a single developer's GitHub for a decade, and <a href="#">local-first</a> projects that treat sync as a sometimes-feature instead of an architecture.
+        </p>
+
+        <p>
+          None of this is new. It just feels new because we spent fifteen years pretending it wasn't a choice.
+        </p>
+
+        <hr />
+
+        <h2>What I am trying to do</h2>
+
+        <p>
+          I am trying, mostly, to ship less. To finish more. To resist the gravitational pull of <em>and also</em>. When I sit down to start something new, I try to write the smallest version of the README first — not the smallest version that would impress anyone, but the smallest version that would be useful to me on a Tuesday.
+        </p>
+
+        <p>
+          The funny thing is that the result usually looks, to an outsider, like restraint. From the inside, it just feels like clarity.
+        </p>
+
+        <p class="text-ink-300 italic">
+          — Written on a rainy Sunday. Set in Fraunces and Inter. Spell-checked exactly once.
+        </p>
+      </div>
+
+      <div class="mt-20 pt-10 border-t border-white/10 reveal">
+        <div class="flex items-center justify-between flex-wrap gap-6">
+          <div class="flex gap-3">
+            <a href="#" class="px-4 py-2 text-sm rounded-full border border-white/10 hover:border-accent-400 hover:text-accent-400 transition">Share</a>
+            <a href="#" class="px-4 py-2 text-sm rounded-full border border-white/10 hover:border-accent-400 hover:text-accent-400 transition">Copy link</a>
+          </div>
+          <a href="#subscribe-cta" class="text-sm text-ink-300 hover:text-ink-100 transition">Subscribe for more →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section id="subscribe-cta" class="relative py-24 border-t border-white/5">
+    <div class="max-w-2xl mx-auto px-6 text-center reveal">
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight">
+        Like this? There's more where it came from.
+      </h2>
+      <p class="mt-4 text-ink-300">One quiet email, every Sunday morning.</p>
+      <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Subscribed';">
+        <input type="email" required placeholder="you@somewhere.com"
+          class="flex-1 px-5 py-3 rounded-full bg-ink-700 border border-white/10 focus:border-accent-400 focus:outline-none transition placeholder:text-ink-300/60" />
+        <button type="submit" class="px-6 py-3 rounded-full bg-ink-100 text-ink-900 font-medium hover:bg-accent-400 transition whitespace-nowrap">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="relative border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-6 text-center text-sm text-ink-300">
+      <a href="index.html" class="hover:text-ink-100 transition">← Back to Nebula</a>
+    </div>
+  </footer>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import { initBackground, initReveal, initReadingProgress } from './js/shared.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      initBackground();
+      initReveal();
+      initReadingProgress();
+    });
+  </script>
+</body>
+</html>

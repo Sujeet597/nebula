@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Nebula</title>
+  <meta name="description" content="About Nebula — a personal blog about software, design, and the spaces in between." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Fraunces', 'Georgia', 'serif'],
+          },
+          colors: {
+            ink: { 900:'#07070b', 800:'#0d0d14', 700:'#13131c', 500:'#2a2a3a', 300:'#9b9bb0', 100:'#e8e8f0' },
+            accent: { 400:'#a78bfa', 500:'#8b5cf6', 600:'#7c3aed' },
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-ink-900 text-ink-100 font-sans antialiased overflow-x-hidden">
+
+  <canvas id="bg-canvas" class="fixed inset-0 -z-10"></canvas>
+
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink-900/40 border-b border-white/5">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-full bg-gradient-to-br from-accent-400 to-accent-600 group-hover:scale-110 transition-transform"></span>
+        <span class="font-serif text-xl font-semibold tracking-tight">Nebula</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm">
+        <li><a href="articles.html" class="text-ink-300 hover:text-ink-100 transition">Articles</a></li>
+        <li><a href="topics.html" class="text-ink-300 hover:text-ink-100 transition">Topics</a></li>
+        <li><a href="about.html" class="text-ink-100">About</a></li>
+        <li><a href="subscribe.html" class="text-ink-300 hover:text-ink-100 transition">Subscribe</a></li>
+      </ul>
+      <a href="subscribe.html" class="text-sm px-4 py-2 rounded-full border border-white/10 hover:border-accent-400 hover:text-accent-400 transition">Get updates →</a>
+    </nav>
+  </header>
+
+  <section class="relative pt-32 pb-16">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-7 reveal">
+        <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent-400 mb-6">
+          <span class="w-2 h-2 rounded-full bg-accent-400 animate-pulse"></span>
+          Hello
+        </span>
+        <h1 class="font-serif text-5xl md:text-7xl font-semibold leading-[0.98] tracking-tight">
+          I'm Santosh.
+          <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-accent-400 via-pink-400 to-amber-300">This is my notebook.</span>
+        </h1>
+        <p class="mt-8 text-lg text-ink-300 max-w-xl leading-relaxed">
+          Nebula is a personal blog about the craft of building software — the parts I find joyful, the parts I find frustrating, and the questions I'm still circling around.
+        </p>
+        <p class="mt-4 text-lg text-ink-300 max-w-xl leading-relaxed">
+          It is written slowly, edited honestly, and shipped from a small studio with too many monitors.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="subscribe.html" class="px-6 py-3 rounded-full bg-ink-100 text-ink-900 font-medium hover:bg-accent-400 transition">Subscribe →</a>
+          <a href="mailto:santosh@v2kart.com" class="px-6 py-3 rounded-full border border-white/10 hover:border-white/30 transition">Say hello</a>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 reveal relative">
+        <div class="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-accent-600 via-pink-500 to-amber-400 relative">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.4),transparent_60%)]"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-40 h-40 rounded-full bg-ink-900/40 backdrop-blur-sm flex items-center justify-center text-6xl font-serif">
+              S
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -right-4 px-4 py-2 rounded-full bg-ink-800 border border-white/10 text-xs">
+          📍 Bengaluru, IN
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-16 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="prose-article reveal">
+        <h2>A short history</h2>
+        <p>
+          I started Nebula in late 2021, somewhere between two jobs I was tired of and one I hadn't started yet. The premise was selfish: I wanted somewhere to think out loud about software without the pressure of a brand voice, a content calendar, or an editor with a quota. Five years later that is still mostly the premise.
+        </p>
+        <p>
+          Most weeks I publish one essay. Some weeks I publish nothing. A few times a year I write something long enough that I have to admit, sheepishly, that it's an essay and not a note.
+        </p>
+
+        <h2>What you'll find here</h2>
+        <p>
+          I write about engineering (mostly the backend kind), design (mostly type and color), the strange middle ground where AI is changing how we work, and — increasingly — the slow, weird joy of building tools just for myself. Occasionally I publish a piece about teaching, hiring, or the particular shape of working remotely from India.
+        </p>
+
+        <h2>What you won't find</h2>
+        <p>
+          Sponsored posts, affiliate links, lifecycle emails, AI-generated filler, or anything that involves the phrase "10x your productivity." I keep no analytics beyond a server log I read once a quarter. Your inbox stays uncluttered because I don't have anything to sell you.
+        </p>
+
+        <h2>The stack</h2>
+        <p>
+          Nebula is hand-rolled HTML, a sprinkling of Tailwind, and a Three.js scene or two. Hosted on a small VPS with a static file server. No CMS, no JS framework, no analytics, no cookies. I do everything in a text editor that has not received a feature update in three years, and I am grateful for that.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <span class="text-xs uppercase tracking-[0.2em] text-accent-400">By the numbers</span>
+        <h2 class="font-serif text-4xl md:text-5xl font-semibold mt-3 tracking-tight">Five quiet years.</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+        <div class="p-8 rounded-3xl bg-white/[0.03] border border-white/5">
+          <div class="font-serif text-5xl font-semibold">42</div>
+          <div class="text-sm text-ink-300 mt-2">essays published</div>
+        </div>
+        <div class="p-8 rounded-3xl bg-white/[0.03] border border-white/5">
+          <div class="font-serif text-5xl font-semibold">12.4k</div>
+          <div class="text-sm text-ink-300 mt-2">subscribers</div>
+        </div>
+        <div class="p-8 rounded-3xl bg-white/[0.03] border border-white/5">
+          <div class="font-serif text-5xl font-semibold">0</div>
+          <div class="text-sm text-ink-300 mt-2">ads, ever</div>
+        </div>
+        <div class="p-8 rounded-3xl bg-white/[0.03] border border-white/5">
+          <div class="font-serif text-5xl font-semibold">∞</div>
+          <div class="text-sm text-ink-300 mt-2">cups of coffee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <span class="text-xs uppercase tracking-[0.2em] text-accent-400">Sometimes elsewhere</span>
+        <h2 class="font-serif text-4xl md:text-5xl font-semibold mt-3 tracking-tight">Talks & writing.</h2>
+      </div>
+      <ul class="divide-y divide-white/5 reveal">
+        <li class="grid md:grid-cols-12 gap-6 py-5 items-center">
+          <span class="md:col-span-2 text-sm text-ink-300/80">2026 · Talk</span>
+          <div class="md:col-span-8">
+            <h3 class="font-serif text-xl font-semibold">Small software, big ideas</h3>
+            <p class="text-sm text-ink-300 mt-1">Keynote, Bengaluru.js meetup</p>
+          </div>
+          <a href="#" class="md:col-span-2 text-sm text-accent-400 hover:underline md:text-right">Watch →</a>
+        </li>
+        <li class="grid md:grid-cols-12 gap-6 py-5 items-center">
+          <span class="md:col-span-2 text-sm text-ink-300/80">2025 · Essay</span>
+          <div class="md:col-span-8">
+            <h3 class="font-serif text-xl font-semibold">On the demoscene, for The Recursion</h3>
+            <p class="text-sm text-ink-300 mt-1">A guest essay about creative coding's strangest subculture</p>
+          </div>
+          <a href="#" class="md:col-span-2 text-sm text-accent-400 hover:underline md:text-right">Read →</a>
+        </li>
+        <li class="grid md:grid-cols-12 gap-6 py-5 items-center">
+          <span class="md:col-span-2 text-sm text-ink-300/80">2025 · Podcast</span>
+          <div class="md:col-span-8">
+            <h3 class="font-serif text-xl font-semibold">Conversations with a code archaeologist</h3>
+            <p class="text-sm text-ink-300 mt-1">An hour on legacy systems, with the Slow Software podcast</p>
+          </div>
+          <a href="#" class="md:col-span-2 text-sm text-accent-400 hover:underline md:text-right">Listen →</a>
+        </li>
+        <li class="grid md:grid-cols-12 gap-6 py-5 items-center">
+          <span class="md:col-span-2 text-sm text-ink-300/80">2024 · Book</span>
+          <div class="md:col-span-8">
+            <h3 class="font-serif text-xl font-semibold">A field guide to boring infrastructure</h3>
+            <p class="text-sm text-ink-300 mt-1">Self-published, 142 pages, available in PDF and as a paperback</p>
+          </div>
+          <a href="#" class="md:col-span-2 text-sm text-accent-400 hover:underline md:text-right">Get it →</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="relative py-24 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 text-center reveal">
+      <h2 class="font-serif text-4xl md:text-5xl font-semibold tracking-tight">Want to say hello?</h2>
+      <p class="mt-4 text-ink-300">I read every email, even if it takes me a week to respond.</p>
+      <div class="mt-8 flex flex-wrap gap-3 justify-center">
+        <a href="mailto:santosh@v2kart.com" class="px-6 py-3 rounded-full bg-ink-100 text-ink-900 font-medium hover:bg-accent-400 transition">Email me</a>
+        <a href="#" class="px-6 py-3 rounded-full border border-white/10 hover:border-white/30 transition">Mastodon</a>
+        <a href="#" class="px-6 py-3 rounded-full border border-white/10 hover:border-white/30 transition">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="relative border-t border-white/5 py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-ink-300">
+      <div class="flex items-center gap-2">
+        <span class="w-6 h-6 rounded-full bg-gradient-to-br from-accent-400 to-accent-600"></span>
+        <span class="font-serif text-lg">Nebula</span>
+        <span class="opacity-60">— since 2021</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-ink-100 transition">RSS</a>
+        <a href="#" class="hover:text-ink-100 transition">Mastodon</a>
+        <a href="#" class="hover:text-ink-100 transition">GitHub</a>
+        <a href="#" class="hover:text-ink-100 transition">Colophon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import { initBackground, initReveal } from './js/shared.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      initBackground();
+      initReveal();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nebula — A Blog About Code, Craft & Curiosity</title>
+  <meta name="description" content="A modern blog exploring software, design, and the spaces in between." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Fraunces', 'Georgia', 'serif'],
+          },
+          colors: {
+            ink: {
+              900: '#07070b',
+              800: '#0d0d14',
+              700: '#13131c',
+              500: '#2a2a3a',
+              300: '#9b9bb0',
+              100: '#e8e8f0',
+            },
+            accent: {
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            },
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-ink-900 text-ink-100 font-sans antialiased overflow-x-hidden">
+
+  <canvas id="bg-canvas" class="fixed inset-0 -z-10"></canvas>
+
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink-900/40 border-b border-white/5">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-full bg-gradient-to-br from-accent-400 to-accent-600 group-hover:scale-110 transition-transform"></span>
+        <span class="font-serif text-xl font-semibold tracking-tight">Nebula</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm text-ink-300">
+        <li><a href="articles.html" class="hover:text-ink-100 transition">Articles</a></li>
+        <li><a href="topics.html" class="hover:text-ink-100 transition">Topics</a></li>
+        <li><a href="about.html" class="hover:text-ink-100 transition">About</a></li>
+        <li><a href="subscribe.html" class="hover:text-ink-100 transition">Subscribe</a></li>
+      </ul>
+      <a href="subscribe.html" class="text-sm px-4 py-2 rounded-full border border-white/10 hover:border-accent-400 hover:text-accent-400 transition">Get updates →</a>
+    </nav>
+  </header>
+
+  <section class="relative min-h-screen flex items-center pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center w-full">
+      <div class="md:col-span-7 reveal">
+        <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent-400 mb-6">
+          <span class="w-2 h-2 rounded-full bg-accent-400 animate-pulse"></span>
+          Issue 042 — Now reading
+        </span>
+        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] tracking-tight">
+          Stories at the
+          <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-accent-400 via-pink-400 to-amber-300">edge</span>
+          of code & craft.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-ink-300 max-w-xl leading-relaxed">
+          Long-form essays on building software, designing thoughtful interfaces, and the strange, beautiful corners of the web.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#articles" class="px-6 py-3 rounded-full bg-ink-100 text-ink-900 font-medium hover:bg-accent-400 hover:text-ink-900 transition">
+            Read latest →
+          </a>
+          <a href="#subscribe" class="px-6 py-3 rounded-full border border-white/10 hover:border-white/30 transition">
+            Subscribe
+          </a>
+        </div>
+        <div class="mt-16 flex items-center gap-6 text-sm text-ink-300">
+          <div class="flex -space-x-2">
+            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 border-2 border-ink-900"></span>
+            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-2 border-ink-900"></span>
+            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-300 to-orange-500 border-2 border-ink-900"></span>
+          </div>
+          <span>Joined by <strong class="text-ink-100">12,400+</strong> curious readers</span>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 relative h-[420px] md:h-[520px] reveal">
+        <div id="hero-3d" class="absolute inset-0"></div>
+        <div class="absolute bottom-0 left-0 right-0 text-center text-xs uppercase tracking-[0.3em] text-ink-300/60">
+          ⟶ drag to interact
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-ink-300/50 text-xs flex flex-col items-center gap-2 animate-bounce">
+      <span>scroll</span>
+      <span class="w-px h-8 bg-ink-300/30"></span>
+    </div>
+  </section>
+
+  <section id="articles" class="relative py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-end justify-between mb-16 reveal">
+        <div>
+          <span class="text-xs uppercase tracking-[0.2em] text-accent-400">The Reading Room</span>
+          <h2 class="font-serif text-4xl md:text-6xl font-semibold mt-3 tracking-tight">Recent articles</h2>
+        </div>
+        <a href="#" class="hidden md:block text-sm text-ink-300 hover:text-ink-100 transition">View archive →</a>
+      </div>
+
+      <article class="reveal group mb-20 grid md:grid-cols-12 gap-8 items-center cursor-pointer">
+        <a href="post.html" class="md:col-span-7 block relative aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-accent-600 via-pink-500 to-amber-400">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.3),transparent_60%)]"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-32 h-32 rounded-full bg-ink-900/40 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+              <span class="text-3xl">✦</span>
+            </div>
+          </div>
+        </a>
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3 text-xs text-ink-300 mb-4">
+            <span class="px-3 py-1 rounded-full bg-accent-500/10 text-accent-400">Featured</span>
+            <span>May 24, 2026 · 12 min read</span>
+          </div>
+          <h3 class="font-serif text-3xl md:text-4xl font-semibold leading-tight group-hover:text-accent-400 transition">
+            <a href="post.html">The quiet beauty of small software.</a>
+          </h3>
+          <p class="mt-4 text-ink-300 leading-relaxed">
+            On the joy of tools that do one thing well — and why the next decade of software will belong to the deliberate, the lightweight, and the strange.
+          </p>
+          <a href="post.html" class="inline-flex items-center gap-2 mt-6 text-sm font-medium text-accent-400 hover:gap-3 transition-all">
+            Read essay <span>→</span>
+          </a>
+        </div>
+      </article>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="reveal post-card group">
+          <a href="post.html" class="block aspect-[4/3] rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.25),transparent_50%)]"></div>
+          </a>
+          <div class="flex items-center gap-3 text-xs text-ink-300 mb-3">
+            <span class="px-2 py-0.5 rounded-full bg-white/5">Three.js</span>
+            <span>8 min read</span>
+          </div>
+          <h3 class="font-serif text-2xl font-semibold leading-snug group-hover:text-accent-400 transition">
+            <a href="post.html">Particles, shaders, and the weight of a single frame.</a>
+          </h3>
+          <p class="mt-3 text-sm text-ink-300">A practical tour through GPU-friendly animation patterns I've stolen from the demoscene.</p>
+        </article>
+
+        <article class="reveal post-card group">
+          <a href="post.html" class="block aspect-[4/3] rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-rose-500 via-pink-500 to-purple-600 relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.25),transparent_50%)]"></div>
+          </a>
+          <div class="flex items-center gap-3 text-xs text-ink-300 mb-3">
+            <span class="px-2 py-0.5 rounded-full bg-white/5">Design</span>
+            <span>5 min read</span>
+          </div>
+          <h3 class="font-serif text-2xl font-semibold leading-snug group-hover:text-accent-400 transition">
+            <a href="post.html">Typography is the interface.</a>
+          </h3>
+          <p class="mt-3 text-sm text-ink-300">Why every product team should obsess over their type system before their component library.</p>
+        </article>
+
+        <article class="reveal post-card group">
+          <a href="post.html" class="block aspect-[4/3] rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.25),transparent_50%)]"></div>
+          </a>
+          <div class="flex items-center gap-3 text-xs text-ink-300 mb-3">
+            <span class="px-2 py-0.5 rounded-full bg-white/5">Engineering</span>
+            <span>10 min read</span>
+          </div>
+          <h3 class="font-serif text-2xl font-semibold leading-snug group-hover:text-accent-400 transition">
+            <a href="post.html">A field guide to boring infrastructure.</a>
+          </h3>
+          <p class="mt-3 text-sm text-ink-300">Postgres, a queue, and a single binary. The unfashionable stack that ships everything I build.</p>
+        </article>
+
+        <article class="reveal post-card group">
+          <a href="post.html" class="block aspect-[4/3] rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.25),transparent_50%)]"></div>
+          </a>
+          <div class="flex items-center gap-3 text-xs text-ink-300 mb-3">
+            <span class="px-2 py-0.5 rounded-full bg-white/5">Notes</span>
+            <span>3 min read</span>
+          </div>
+          <h3 class="font-serif text-2xl font-semibold leading-snug group-hover:text-accent-400 transition">
+            <a href="post.html">On taste, taste-makers, and the long arc of the web.</a>
+          </h3>
+          <p class="mt-3 text-sm text-ink-300">A short note prompted by a long afternoon spent browsing personal websites.</p>
+        </article>
+
+        <article class="reveal post-card group">
+          <a href="post.html" class="block aspect-[4/3] rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-violet-500 via-fuchsia-500 to-pink-500 relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.25),transparent_50%)]"></div>
+          </a>
+          <div class="flex items-center gap-3 text-xs text-ink-300 mb-3">
+            <span class="px-2 py-0.5 rounded-full bg-white/5">AI</span>
+            <span>14 min read</span>
+          </div>
+          <h3 class="font-serif text-2xl font-semibold leading-snug group-hover:text-accent-400 transition">
+            <a href="post.html">Writing software with a robot in the room.</a>
+          </h3>
+          <p class="mt-3 text-sm text-ink-300">How my workflow changed after a year of pair-programming with a large language model.</p>
+        </article>
+
+        <article class="reveal post-card group">
+          <a href="post.html" class="block aspect-[4/3] rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-slate-700 via-zinc-700 to-stone-800 relative border border-white/5">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.3),transparent_50%)]"></div>
+          </a>
+          <div class="flex items-center gap-3 text-xs text-ink-300 mb-3">
+            <span class="px-2 py-0.5 rounded-full bg-white/5">Essay</span>
+            <span>22 min read</span>
+          </div>
+          <h3 class="font-serif text-2xl font-semibold leading-snug group-hover:text-accent-400 transition">
+            <a href="post.html">The long, weird tail of personal computing.</a>
+          </h3>
+          <p class="mt-3 text-sm text-ink-300">From hypercard to Obsidian — a meandering history of software as a personal medium.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="topics" class="relative py-24 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <span class="text-xs uppercase tracking-[0.2em] text-accent-400">Browse by</span>
+        <h2 class="font-serif text-4xl md:text-5xl font-semibold mt-3 tracking-tight">Topics</h2>
+      </div>
+      <div class="flex flex-wrap gap-3 reveal">
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">Engineering</a>
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">Design</a>
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">Three.js</a>
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">WebGL</a>
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">AI</a>
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">Product</a>
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">Career</a>
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">Notes</a>
+        <a href="#" class="px-5 py-2.5 rounded-full border border-white/10 hover:border-accent-400 hover:bg-accent-500/10 hover:text-accent-400 transition">Essays</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="relative py-24 md:py-32 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6 reveal">
+      <span class="text-xs uppercase tracking-[0.2em] text-accent-400">About</span>
+      <h2 class="font-serif text-4xl md:text-6xl font-semibold mt-3 tracking-tight leading-tight">
+        A blog for people who still love
+        <span class="italic text-accent-400">building things</span> on the web.
+      </h2>
+      <p class="mt-8 text-lg text-ink-300 leading-relaxed">
+        Nebula is a personal newsletter and journal written from a small studio apartment somewhere with too many monitors. New essays land most weeks. No tracking, no ads, no AI-generated filler — just slow, considered writing about the practice of making software.
+      </p>
+    </div>
+  </section>
+
+  <section id="subscribe" class="relative py-24 md:py-32 border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 text-center reveal">
+      <span class="text-xs uppercase tracking-[0.2em] text-accent-400">Letters</span>
+      <h2 class="font-serif text-4xl md:text-6xl font-semibold mt-3 tracking-tight">
+        One quiet email,<br />every Sunday morning.
+      </h2>
+      <p class="mt-6 text-ink-300 max-w-xl mx-auto">
+        A single essay, a few links worth your time, and never anything more. Unsubscribe with one click.
+      </p>
+      <form class="mt-10 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Subscribed';">
+        <input type="email" required placeholder="you@somewhere.com"
+          class="flex-1 px-5 py-3.5 rounded-full bg-ink-700 border border-white/10 focus:border-accent-400 focus:outline-none transition placeholder:text-ink-300/60" />
+        <button type="submit" class="px-6 py-3.5 rounded-full bg-ink-100 text-ink-900 font-medium hover:bg-accent-400 transition whitespace-nowrap">
+          Subscribe →
+        </button>
+      </form>
+      <p class="mt-4 text-xs text-ink-300/60">12,400+ readers. No spam, ever.</p>
+    </div>
+  </section>
+
+  <footer class="relative border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-ink-300">
+      <div class="flex items-center gap-2">
+        <span class="w-6 h-6 rounded-full bg-gradient-to-br from-accent-400 to-accent-600"></span>
+        <span class="font-serif text-lg">Nebula</span>
+        <span class="opacity-60">— since 2021</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-ink-100 transition">RSS</a>
+        <a href="#" class="hover:text-ink-100 transition">Mastodon</a>
+        <a href="#" class="hover:text-ink-100 transition">GitHub</a>
+        <a href="#" class="hover:text-ink-100 transition">Colophon</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
